@@ -1,16 +1,20 @@
-package com.github.maquirag.enni;
+package com.github.maquirag.enni.ui;
 
 import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.html.Anchor;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-@Route("")
-public class MainView extends VerticalLayout {
+@Route(value = "", layout = MainLayout.class)
+@PageTitle("enni | Dashboard")
+public class DashboardView extends VerticalLayout {
 
-    public MainView() {
-        add(new H1("enni"),
-                new H3("ENhanced Nutrition Insights"));
+    public DashboardView() {
+        add(new H1("enni"), new H2("ENhanced Nutrition Insights"));
 
         Div attribution = new Div(
                 new Text("Icons made by "),
