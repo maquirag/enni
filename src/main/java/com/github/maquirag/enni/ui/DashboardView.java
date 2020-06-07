@@ -1,10 +1,9 @@
 package com.github.maquirag.enni.ui;
 
+import com.github.maquirag.enni.backend.service.AllergenService;
+import com.github.maquirag.enni.backend.service.IngredientService;
 import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.html.Anchor;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -13,9 +12,19 @@ import com.vaadin.flow.router.Route;
 @PageTitle("enni | Dashboard")
 public class DashboardView extends VerticalLayout {
 
-    public DashboardView() {
-        add(new H1("enni"), new H2("ENhanced Nutrition Insights"));
+    AllergenService allergenService;
+    IngredientService ingredientService;
 
+    public DashboardView(AllergenService allergenService,
+                         IngredientService ingredientService) {
+        this.allergenService = allergenService;
+        this.ingredientService = ingredientService;
+
+        add(new H1("enni"), new H2("ENhanced Nutrition Insights"));
+        add(new Paragraph("Number of allergens: " + allergenService.count()));
+        add(new Paragraph("Number of ingredients: " + ingredientService.count()));
+
+        // Icon artwork attribution
         Div attribution = new Div(
                 new Text("Icons made by "),
                 new Anchor("https://www.flaticon.com/authors/freepik", "Freepik"),
